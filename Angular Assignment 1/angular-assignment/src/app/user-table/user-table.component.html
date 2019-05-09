@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-striped user-table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userData">
+          <th scope="row">{{user.id}}</th>
+          <td>{{user.name}}</td>
+          <td>{{user.age}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="row">
+    <button class="btn btn-primary" (click)="toggleDisplayData()">Toggle</button>
+    &nbsp;
+    <p *ngIf="toggleData; else elseBlock">
+        Content to render when condition is true.
+    </p>
+    <ng-template #elseBlock>
+      Content to render when condition is false.
+    </ng-template>
+  </div>
+</div>
