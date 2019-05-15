@@ -1,0 +1,99 @@
+<!-- Polymer Imports -->
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<!-- Icons Import -->
+<link rel="import" href="../../bower_components/px-icon-set/px-icon.html">
+<link rel="import" href="../../bower_components/px-icon-set/px-icon-set-feature.html">
+
+<!-- Predix Data Table -->
+<link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
+
+<!-- Predix Modal -->
+<link rel="import" href="../../bower_components/px-modal/px-modal.html">
+
+<dom-module id="employee-table">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      .custom-icon {
+        stroke: red;
+        --iron-icon-width: 15px;
+        --iron-icon-height: 15px;
+      }
+    </style>
+    <h2>[[title]]</h2>
+    <hr><br>
+    <px-data-table table-data="{{tableData}}">
+      <px-data-table-column name="first" type="html"></px-data-table-column>
+      <px-data-table-column name="last"></px-data-table-column>
+      <px-data-table-column name="email"></px-data-table-column>
+    </px-data-table>
+    <px-modal id="userInfoModal" header-text="User Information" body-text="DEFAULT" accept-text="OK" hide-reject-button></px-modal>
+    <px-icon class="custom-icon" icon="px-fea:alerts"></px-icon>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'employee-table',
+
+      properties: {
+        title: {
+          type: String,
+          value: 'User Information',
+        },
+        tableData: {
+          type: Array
+        }
+      },
+      ready: function () {
+        this.tableData = [
+          {
+            "first": "Valentine",
+            "last": "Meyer",
+            "email": "valentinemeyer@scentric.com"
+          },
+          {
+            "first": "Silva",
+            "last": "Alexander",
+            "email": "silvaalexander@gmail.com"
+          },
+          {
+            "first": "Hopkins",
+            "last": "Wong",
+            "email": "hopkinswong@hotmail.com"
+          },
+          {
+            "first": "Joe",
+            "last": "Sherman",
+            "email": "joejoe@yahoo.com"
+          },
+          {
+            "first": "Jane",
+            "last": "Bartlett",
+            "email": "jane@scentric.com"
+          }
+        ];
+
+        this.tableData.forEach((row) => {
+          const obj = [
+            row['first'],
+            row['last'],
+            row['email']
+          ];
+          row["first"] = row["first"] + '<p onclick="handleModalClick(\'' + obj + '\')"><px-icon class="custom-icon" icon="px-fea:alerts"></px-icon></p>';
+        });
+      }
+    });
+
+    function handleModalClick(rowValue) {
+      const userInfo = rowValue.split(",");
+      var modal = document.getElementById('userInfoModal');
+      modal.bodyText = `User Full Name is: ${userInfo[0] + ' ' + userInfo[1]}. Email Id is: ${userInfo[2]}`;
+      modal.opened = true;
+    }
+  </script>
+</dom-module>

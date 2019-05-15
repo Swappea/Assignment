@@ -1,0 +1,7 @@
+{
+  "name": "EmployeeTableAssignment",
+  "short_name": "EmployeeTableAssignment",
+  "description": "Assignment of Employee Table",
+  "start_url": "/",
+  "display": "standalone"
+}

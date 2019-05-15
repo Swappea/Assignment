@@ -1,0 +1,19 @@
+{
+  "name": "EmployeeTableAssignment",
+  "description": "Assignment of Employee Table",
+  "main": "index.html",
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.9.0",
+    "px-modal": "^3.3.5",
+    "px-data-table": "^6.1.4"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0",
+    "web-component-tester": "Polymer/web-component-tester#^6.0.0",
+    "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
+  },
+  "resolutions": {
+    "iron-a11y-keys-behavior": "1 - 2"
+  }
+}
