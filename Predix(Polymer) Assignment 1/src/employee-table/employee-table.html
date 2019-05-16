@@ -4,6 +4,7 @@
 <!-- Icons Import -->
 <link rel="import" href="../../bower_components/px-icon-set/px-icon.html">
 <link rel="import" href="../../bower_components/px-icon-set/px-icon-set-feature.html">
+<link rel="import" href="../../bower_components/px-icon-set/px-icon-set-utility.html">
 
 <!-- Predix Data Table -->
 <link rel="import" href="../../bower_components/px-data-table/px-data-table.html">
@@ -17,12 +18,7 @@
       :host {
         display: block;
       }
-
-      .custom-icon {
-        stroke: red;
-        --iron-icon-width: 15px;
-        --iron-icon-height: 15px;
-      }
+      
     </style>
     <h2>[[title]]</h2>
     <hr><br>
@@ -30,9 +26,9 @@
       <px-data-table-column name="first" type="html"></px-data-table-column>
       <px-data-table-column name="last"></px-data-table-column>
       <px-data-table-column name="email"></px-data-table-column>
+      <px-data-table-column name="actions" type="html" editable></px-data-table-column>
     </px-data-table>
     <px-modal id="userInfoModal" header-text="User Information" body-text="DEFAULT" accept-text="OK" hide-reject-button></px-modal>
-    <px-icon class="custom-icon" icon="px-fea:alerts"></px-icon>
   </template>
 
   <script>
@@ -84,8 +80,15 @@
             row['last'],
             row['email']
           ];
-          row["first"] = row["first"] + '<p onclick="handleModalClick(\'' + obj + '\')"><px-icon class="custom-icon" icon="px-fea:alerts"></px-icon></p>';
+          row["first"] = row["first"] + '<p onclick="handleModalClick(\'' + obj + '\')"><px-icon style="stroke: red;" icon="px-fea:alerts"></px-icon></p>';
+          row['actions'] = '<p><px-icon style="stroke: blue;" icon="px-utl:information"></px-icon></p>';
         });
+      },
+      listeners: {
+        'px-cell-click': "_cellClicked",
+      },
+      _cellClicked: function(event) {
+        console.log('Event from Cell: ', event);
       }
     });
 
