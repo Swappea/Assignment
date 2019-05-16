@@ -1,0 +1,36 @@
+<ng-container *ngIf="showWellList && !loading">
+  <div class="container mt-3">
+    <div class="row">
+      <table class="table table-striped user-table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Type</th>
+            <th scope="col">Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let well of wellInfoData">
+            <th scope="row">{{well.id}}</th>
+            <td>{{well.name}}</td>
+            <td [ngClass]="well.type === 'esp' ? 'custom-class-1' : 'custom-class-2'">
+              {{well.type}}
+            </td>
+            <td [ngStyle]="{'color': 'red', 'cursor': 'pointer'}" (click)="loadWellForm(well)">
+              {{well.sourceKey}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="!showWellList">
+  <app-add-well-component #addWellComp (notifyAddWellEvent)="notifyAddWellEvent($event)"></app-add-well-component>
+</ng-container>
+<div *ngIf="loading" class="spinner-border text-primary d-flex justify-content-center container mt-5" style="width: 6rem; height: 6rem;"
+  role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+

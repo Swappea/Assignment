@@ -1,0 +1,21 @@
+<div class="container">
+    <form>
+        <div class="form-group">
+            <label for="wellName">Name</label>
+            <input #wellName type="text" name="wellName" class="form-control" id="wellName" required>
+        </div>
+        <div class="form-group">
+            <label for="wellType">Type</label>
+            <input #wellType type="text" name="wellType" class="form-control" id="wellType" required>
+        </div>
+        <div class="form-group">
+            <label for="sourceKey">Source Key</label>
+            <input #sourceKey type="text" name="sourceKey" class="form-control" id="sourceKey" readonly>
+        </div>
+        <button class="btn btn-success" (click)="addNewWell()">Add Well</button>
+    </form>
+    <br>
+    <div *ngIf="validationMessage" class="alert alert-danger" role="alert">
+        {{validationMessage}}
+    </div>
+</div>
