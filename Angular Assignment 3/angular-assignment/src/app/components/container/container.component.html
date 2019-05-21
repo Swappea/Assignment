@@ -1,0 +1,16 @@
+<div class="container custom-container">
+  <div class="row custom-row">
+    <div class="col-8 viewer" (drop)="drop($event)" (dragover)="allowDrop($event)">
+      <ng-template appContainer>
+
+      </ng-template>
+    </div>
+    <div class="col-4 comp-list">
+      <ul class="custom-ul">
+        <li class="custom-li" *ngFor="let compData of compListData; let index = index;" draggable="true" (dragstart)="dragStarted($event, index)">
+          {{ compData.data.compTitle}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+
+.custom-container {
+    margin-left: 2% !important;
+    margin-top: 2% !important;
+    margin-right: 0% !important;
+}
+
+.custom-row {
+    width: 110%;
+    margin-right: 0% !important;
+}
+
+.custom-ul {
+    list-style-type:none;
+}
+
+.custom-li {
+    background-color: lightblue;
+    margin: 2% 2% 2% -10%;
+}
+
+.viewer {
+    border: 1px solid darkgoldenrod;
+}
+
+.comp-list {
+    border: 1px solid darkgreen;
+    width: 100%;
+}
+
