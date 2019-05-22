@@ -13,17 +13,18 @@ export class ContainerComponent implements OnInit {
 
   @ViewChild(ContainerDirective) containerDirectiveRef: ContainerDirective;
   compListData: ComponentType[];
+  private currIndex = -1;
 
   constructor(private getCompList: GetComponentListService, private componentFactoryResolver: ComponentFactoryResolver) {
     this.compListData = this.getCompList.getComponentList();
   }
 
   ngOnInit() {
-    
+
   }
 
-  loadChildComponent() {
-    const currComponent = this.compListData[1];
+  loadChildComponent(index: number) {
+    const currComponent = this.compListData[index];
 
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(currComponent.component);
     const viewContainerRef = this.containerDirectiveRef.viewContainerRef;
@@ -34,18 +35,17 @@ export class ContainerComponent implements OnInit {
     (componentRef.instance as ContainerComponentData).index = currComponent.data.index;
   }
 
-  dragStarted(event, index) {
-    console.log('DRAG STARTED', event, index);
+  dragStarted(event, index: number) {
+    this.currIndex = index;
   }
 
   drop(event) {
     event.preventDefault();
-    console.log('DRAG FINISHED', event);
+    this.loadChildComponent(this.currIndex);
   }
 
   allowDrop(event) {
     event.preventDefault();
-    console.log('DRAGGING', event);
   }
 
 }

@@ -17,14 +17,15 @@
 .custom-li {
     background-color: lightblue;
     margin: 2% 2% 2% -10%;
+    text-align: center;
 }
 
 .viewer {
-    border: 1px solid darkgoldenrod;
+    border: 2px solid darkgoldenrod;
 }
 
 .comp-list {
-    border: 1px solid darkgreen;
+    border: 2px solid darkgreen;
     width: 100%;
 }
 
